@@ -1,19 +1,20 @@
 import React from 'react';
 import FilterLink from '../containers/FilterLink';
+import VisibilityTypes from '../enum/VisibilityTypes';
 
 const Footer = () => (
   <p>
     Show:
     {" "}
-    <FilterLink filter="SHOW_ALL">
+    <FilterLink filter={VisibilityTypes.SHOW_ALL}>
       All
     </FilterLink>
     {", "}
-    <FilterLink filter="SHOW_ACTIVE">
+    <FilterLink filter={VisibilityTypes.SHOW_ACTIVE}>
       Active
     </FilterLink>
     {", "}
-    <FilterLink filter="SHOW_COMPLETED">
+    <FilterLink filter={VisibilityTypes.SHOW_COMPLETED}>
       Completed
     </FilterLink>
   </p>

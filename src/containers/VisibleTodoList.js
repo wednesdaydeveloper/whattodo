@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
-import { delTodo } from '../actions/index';
 import TodoList from '../components/TodoList';
+import VisibilityTypes from '../enum/VisibilityTypes';
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
-    case 'SHOW_ALL':
+    case VisibilityTypes.SHOW_ALL:
       return todos;
-    case 'SHOW_COMPLETED':
+    case VisibilityTypes.SHOW_COMPLETED:
       return todos.filter(t => t.deleteAt !== null);
-    case 'SHOW_ACTIVE':
+    case VisibilityTypes.SHOW_ACTIVE:
       return todos.filter(t => t.deleteAt === null);
     default:
       throw new Error('Unknown filter: ' + filter);
@@ -19,13 +19,8 @@ const mapStateToProps = (state) => ({
   todos: getVisibleTodos(state.todos, state.visibilityFilter)
 });
 
-const mapDispatchToProps =  (dispatch) => ({
-  onDelToDo: (id) => dispatch(delTodo(id)),
-});
-
 const VisibleTodoList = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(TodoList);
 
 export default VisibleTodoList;

@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import { ADD_TODO, DEL_TODO } from '../actions';
+import VisibilityTypes from '../enum/VisibilityTypes';
 
 
 
@@ -13,7 +14,7 @@ function createTodo( todo ) {
     completed:false,
     createAt: new Date(),
     deleteAt: null,
-    detail: "" };
+    detail: ""};
 }
 
 const initState = [
@@ -38,13 +39,12 @@ const todos = handleActions(
         );
     }
   }, initState);
-  
 
 const visibilityFilter = handleActions({
   SET_VISIBILITY_FILTER: (state, action) => {
     return action.payload;
   }
-}, 'SHOW_ALL');
+}, VisibilityTypes.SHOW_ACTIVE);
 
 export default combineReducers({
   todos,

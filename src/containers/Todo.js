@@ -13,7 +13,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(delTodo(id)); 
     },
     onEditToDo: (id) => { 
-      console.log("onEditToDo"); 
+      console.log("onEditToDo: {}", id); 
     },
   };
 }
