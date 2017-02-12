@@ -3,21 +3,34 @@ import { combineReducers } from 'redux';
 import { ADD_TODO, DEL_TODO } from '../actions';
 
 
-const initState = [
-    {id: -1, text: 'aaa', completed:false, createAt: new Date(), deleteAt: null },
-    {id: -2, text: 'bbb', completed:false, createAt: new Date(), deleteAt: null },
-    {id: -3, text: 'ccc', completed:false, createAt: new Date(), deleteAt: null },
-  ];
 
 let currentId = 0;
+
+function createTodo( todo ) {
+  return {
+    ...todo,
+    id: currentId++,
+    completed:false,
+    createAt: new Date(),
+    deleteAt: null,
+    detail: "" };
+}
+
+const initState = [
+  createTodo({ text: 'aaa'}),
+  createTodo({ text: 'bbb'}),
+  createTodo({ text: 'ccc'}),
+  createTodo({ text: 'ddd'}),
+];
+
 
 const todos = handleActions(
   {
     ADD_TODO: (state, action) => {
       return [
-            ...state,
-            {id: currentId++, text:action.payload, completed:false, createAt: new Date(), deleteAt: null }
-          ];
+        ...state,
+        createTodo({text: action.payload})
+      ];
     },
     DEL_TODO: (state, action) => {
       return state.map(t =>

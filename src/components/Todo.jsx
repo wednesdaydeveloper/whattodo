@@ -1,13 +1,16 @@
 import React from 'react';
 
-const Todo = ({ onClick, completed, text }) => (
-  <li
-    onClick={onClick}
-    style={{
-      textDecoration: completed ? 'line-through' : 'none'
-    }}
-  >
-    {text}
+const Todo = ({ onDelToDo, onEditToDo, completed, text }) => (
+  <li>
+    <div>
+      <button onClick={onDelToDo}>
+        削除
+      </button>
+
+      <span onClick={onEditToDo} style={{textDecoration: completed ? 'line-through' : 'none' }}>
+        {text}
+      </span>
+    </div>
   </li>
 );
 

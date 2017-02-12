@@ -4,6 +4,12 @@ const TodoAdd = ({ onAddToDo }) => {
 
 	let input;
 
+	const _handleKeyDown = function (ev) {
+		if (ev.keyCode === 13) { // Enter の場合のみ
+			_onAddToDo(ev);
+		}
+	};
+
 	const _onAddToDo = function (ev) {
 		var newTodo = input.value.trim();
 		if (newTodo) {
@@ -12,15 +18,9 @@ const TodoAdd = ({ onAddToDo }) => {
 		input.value="";
 	};
 
-	const handleKeyDown = function (ev) {
-		if (ev.keyCode === 13) { // Enter の場合のみ
-			this._onAddToDo();
-		}
-	};
-
-  return (
+	return (
 		<div>
-			<input type="text" ref={node => input = node} onKeyDown={handleKeyDown} />
+			<input type="text" ref={node => input = node} onKeyDown={_handleKeyDown} />
 			<input type="button" value="submit" onClick={_onAddToDo} />
 		</div>
     );

@@ -7,7 +7,8 @@ const TodoList = ({ todos, onDelToDo }) => (
       <Todo
         key={todo.id}
         {...todo}
-        onClick={() => onDelToDo(todo.id)}
+        onDelToDo={() => onDelToDo(todo.id)}
+        onEditToDo = {() => console.log("onedit")}
       />
     )}
   </ul>
