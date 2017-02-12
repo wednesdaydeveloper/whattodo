@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
 import Todo from '../components/Todo';
-import {delTodo} from '../actions/index';
+import {delTodo, editStart, editEnd, changeTodo} from '../actions/index';
 
 
 function mapStateToProps(state) {
-  return {};
+  return {
+    editingId: state.editing
+  };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -12,8 +14,14 @@ function mapDispatchToProps(dispatch) {
     onDelToDo: (id) => { 
       dispatch(delTodo(id)); 
     },
-    onEditToDo: (id) => { 
-      console.log("onEditToDo: {}", id); 
+    onEditStart: (id) => { 
+      dispatch(editStart(id));
+    },
+    onEditEnd: (id) => { 
+      dispatch(editEnd(id));
+    },
+    onChangeTodo: (todo) => { 
+      dispatch(changeTodo(todo));
     },
   };
 }

@@ -6,7 +6,7 @@ const TodoList = ({ todos, onDelToDo }) => (
     {todos.map((todo) =>
       <TodoContainer
         key={todo.id}
-        {...todo}
+        todo={todo}
       />
     )}
   </ul>

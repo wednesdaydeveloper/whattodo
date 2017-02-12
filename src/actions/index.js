@@ -1,10 +1,17 @@
 import { createAction } from 'redux-actions';
 
 
+
 export const ADD_TODO = 'ADD_TODO';
 export const DEL_TODO = 'DEL_TODO';
+export const CHANGE_TODO = 'CHANGE_TODO';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
+export const EDIT_START = 'EDIT_START';
+export const EDIT_END = 'EDIT_END';
 
-export const addTodo = createAction(ADD_TODO, text => text);
-export const delTodo = createAction(DEL_TODO, index => index);
-export const setVisibilityFilter = createAction(SET_VISIBILITY_FILTER, filter => filter);
+export const addTodo = createAction(ADD_TODO);
+export const delTodo = createAction(DEL_TODO);
+export const changeTodo = createAction(CHANGE_TODO);
+export const setVisibilityFilter = createAction(SET_VISIBILITY_FILTER);
+export const editStart = createAction(EDIT_START);
+export const editEnd = createAction(EDIT_END);
