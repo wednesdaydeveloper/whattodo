@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
-import { ADD_TODO, DEL_TODO } from '../actions/index.js';
+import { ADD_TODO, DEL_TODO } from '../actions';
 
 
 const initState = [

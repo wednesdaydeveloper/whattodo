@@ -1,4 +1,4 @@
-import reducer from './reducers/index.js';
+import reducer from './reducers';
 
 
 //  Store

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import TodoAdd from '../components/TodoAdd.jsx';
-import {addTodo} from '../actions/index.js';
+import TodoAdd from '../components/TodoAdd';
+import {addTodo} from '../actions/index';
 
 
 function mapStateToProps(state) {
