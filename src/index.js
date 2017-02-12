@@ -1,12 +1,21 @@
-import { createAction } from 'redux-actions';
+/*
+redux 無し todo
+http://javascript-memo2.seesaa.net/article/436858441.html
+
+http://qiita.com/erukiti/items/e16aa13ad81d5938374e
+*/
 
 
-export const ADD_TODO = 'ADD_TODO';
-export const DEL_TODO = 'DEL_TODO';
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
-export const TOGGLE_TODO = 'TOGGLE_TODO';
+import App from './components/App.jsx';
+import store from './Store.js';
 
-export const addTodo = createAction(ADD_TODO, text => text);
-export const delTodo = createAction(DEL_TODO, index => index);
-export const setVisibilityFilter = createAction(SET_VISIBILITY_FILTER, filter => filter);
-export const toggleTodo = createAction(TOGGLE_TODO, id => id);
+
+import { Provider } from 'react-redux';
+import {render} from 'react-dom';
+
+render(
+  <Provider store = { store } >
+    <App />
+  </Provider>,
+	document.getElementById('root')
+);
