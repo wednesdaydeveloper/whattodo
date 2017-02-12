@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Todo = ({ onDelToDo, onEditToDo, completed, text }) => (
+const Todo = ({ onDelToDo, onEditToDo, id, completed, text }) => (
   <li>
     <div>
-      <button onClick={onDelToDo}>
+      <button onClick={() => onDelToDo(id)}>
         削除
       </button>
 

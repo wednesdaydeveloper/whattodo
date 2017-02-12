@@ -1,14 +1,15 @@
 import React from 'react';
-import Todo from './Todo';
+import TodoContainer from '../containers/Todo';
+
+
+
 
 const TodoList = ({ todos, onDelToDo }) => (
   <ul>
     {todos.map((todo) =>
-      <Todo
+      <TodoContainer
         key={todo.id}
         {...todo}
-        onDelToDo={() => onDelToDo(todo.id)}
-        onEditToDo = {() => console.log("onedit")}
       />
     )}
   </ul>
