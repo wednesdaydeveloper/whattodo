@@ -4,18 +4,16 @@ const Todo = ({ todo, editingId, onDelToDo, onEditStart, onEditEnd, onChangeTodo
 
   let text    = null;
   let detail  = null;
-  let t =todo.text;
-  
+
   return (
   <li>
     <div style={{display: editingId === todo.id ? '' : 'none' }}>
 			<span>
-			  <label>すること</label>
-  			<input type="text" ref={node => text = node} />
+  			<input type="text" ref={node => text = node} defaultValue={todo.text} />
 			</span>
 			<span>
 			  <label>コメント</label>
-  			<input type="text" ref={node => detail = node} />
+  			<input type="text" ref={node => detail = node} defaultValue={todo.detail} />
 			</span>
       <button onClick={() => {
         onChangeTodo({id: todo.id, text: text.value, detail: detail.value});
@@ -24,15 +22,16 @@ const Todo = ({ todo, editingId, onDelToDo, onEditStart, onEditEnd, onChangeTodo
         OK
       </button>
       <button onClick={() => {
-        // text.value  =todo.text;
-        // detail.value=todo.detail;
         onEditEnd(todo.id);
       }}>
         キャンセル
       </button>
     </div>
-    <div>
-      <button onClick={() => onDelToDo(todo.id)}>
+    <div style={{display: editingId !== todo.id ? '' : 'none' }}>
+      <button onClick={() => {
+        onEditEnd(todo.id);
+        onDelToDo(todo.id);
+      }}>
         削除
       </button>
 
