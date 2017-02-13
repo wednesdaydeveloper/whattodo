@@ -60,8 +60,16 @@ const editing = handleActions({
   }
 }, null);
 
+const projects = handleActions({
+  "": (state, action) => state
+}, [
+  {id: 1, name: "引っ越し"},
+  {id: 2, name: "GWの予定"},
+]);
+
 export default combineReducers({
   todos,
   visibilityFilter,
-  editing
+  editing,
+  projects
 });
