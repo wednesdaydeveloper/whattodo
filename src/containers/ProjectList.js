@@ -1,10 +1,10 @@
 import React from 'react';
 
 const ProjectListComponent = ({projects}) => (
-  <ul>
+  <ul className="nav-item">
     {projects.map((project) =>
       <li>
-        {project.name} 
+        <a className="nav-link" href="#">{project.name} </a>
       </li>
     )}
   </ul>
