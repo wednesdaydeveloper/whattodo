@@ -1,16 +1,16 @@
 import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
-import { ADD_TODO, DEL_TODO, CHANGE_TODO } from '../actions';
+import { ADD_TODO, DEL_TODO, CHANGE_TODO, ADD_PROJECT } from '../actions';
 import VisibilityTypes from '../enum/VisibilityTypes';
 
 
 
-let currentId = 0;
+let currentTodoId = 0;
 
 function createTodo( todo ) {
   return {
     ...todo,
-    id: currentId++,
+    id: currentTodoId++,
     completed:false,
     createAt: new Date(),
     deleteAt: null,
@@ -60,11 +60,14 @@ const editing = handleActions({
   }
 }, null);
 
+
+let currentProjectId = 0;
+
 const projects = handleActions({
-  "": (state, action) => state
+  ADD_PROJECT: (state, action) => [...state, { id: currentProjectId++, name: action.payload}]
 }, [
-  {id: 1, name: "引っ越し"},
-  {id: 2, name: "GWの予定"},
+  {id: currentProjectId++, name: "引っ越し", parent: null},
+  {id: currentProjectId++, name: "GWの予定", parent: null},
 ]);
 
 export default combineReducers({

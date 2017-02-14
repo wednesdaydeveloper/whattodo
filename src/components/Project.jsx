@@ -1,5 +1,5 @@
 import React from 'react';
-import ProjectAdd from './ProjectAdd';
+import ProjectAdd from '../containers/ProjectAdd';
 import ProjectList from '../containers/ProjectList';
 
 

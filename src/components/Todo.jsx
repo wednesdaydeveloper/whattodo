@@ -5,15 +5,27 @@ const Todo = ({ todo, editingId, onDelToDo, onEditStart, onEditEnd, onChangeTodo
   let text    = null;
   let detail  = null;
 
+	const changeTodo = function (ev) {
+    onChangeTodo({id: todo.id, text: text.value, detail: detail.value});
+    onEditEnd(todo.id);
+	};  
+
+  
+	const _handleKeyDown = function (ev) {
+		if (ev.keyCode === 13) { // Enter の場合のみ
+		  changeTodo(ev);
+		}
+	};  
+
   return (
   <li>
     <div style={{display: editingId === todo.id ? '' : 'none' }}>
 			<span>
-  			<input type="text" ref={node => text = node} defaultValue={todo.text} />
+  			<input type="text" ref={node => text = node} defaultValue={todo.text} onKeyDown={_handleKeyDown} />
 			</span>
 			<span>
 			  <label>コメント</label>
-  			<input type="text" ref={node => detail = node} defaultValue={todo.detail} />
+  			<input type="text" ref={node => detail = node} defaultValue={todo.detail} onKeyDown={_handleKeyDown} />
 			</span>
       <button onClick={() => {
         onChangeTodo({id: todo.id, text: text.value, detail: detail.value});
