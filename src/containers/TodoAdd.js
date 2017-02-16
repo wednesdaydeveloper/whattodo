@@ -4,12 +4,15 @@ import {addTodo} from '../actions/index';
 
 
 function mapStateToProps(state) {
-  return { todos: state.todos }
+  return { 
+    todos: state.todos,
+    group: state.group
+  };
 }
 function mapDispatchToProps(dispatch) {
   return {
-    onAddToDo: (text) => { 
-      dispatch(addTodo(text)) 
+    onAddToDo: (todo) => { 
+      dispatch(addTodo(todo));
     },
   };
 }

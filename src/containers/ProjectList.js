@@ -1,10 +1,15 @@
 import React from 'react';
+import GroupTypes from '../enum/GroupTypes';
+import { currentGroup } from '../actions/index';
 
-const ProjectListComponent = ({projects}) => (
-  <ul className="nav-item">
+
+const ProjectListComponent = ({projects, currentProjectId, onSelectProject}) => (
+  <ul className="nav nav-pills flex-column">
     {projects.map((project) =>
-      <li>
-        <a className="nav-link" href="#">{project.name} </a>
+      <li className="nav-item">
+        <a className="nav-link" href="#" onClick={() => {
+          console.log(project);
+          onSelectProject(project.id);}}>{project.name} </a>
       </li>
     )}
   </ul>
@@ -13,11 +18,19 @@ const ProjectListComponent = ({projects}) => (
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => ({
-  projects: state.projects
+  projects: state.projects,
+  currentGroup: state.group
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSelectProject: (id) => dispatch(currentGroup({
+    groupId: id,
+    groupType: GroupTypes.PROJECT})),
 });
 
 const ProjectList = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ProjectListComponent);
 
 export default ProjectList;

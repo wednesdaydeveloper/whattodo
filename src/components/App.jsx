@@ -9,10 +9,10 @@ import Header from './Header';
 const App = () => (
 	<div>
 		<Header />
-
-	    <div className="container-fluid">
+	
+		<div className="container-fluid">
 			<div className="row">
-		        <nav className="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
+				<nav className="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
 					<Project />
 				</nav>
 				<main className="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
@@ -23,7 +23,6 @@ const App = () => (
 				</main>
 			</div>
 		</div>
-
 	</div>
 );
 

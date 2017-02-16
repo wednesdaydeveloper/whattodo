@@ -2,6 +2,7 @@ import { handleActions } from 'redux-actions';
 import { combineReducers } from 'redux';
 import { ADD_TODO, DEL_TODO, CHANGE_TODO, ADD_PROJECT } from '../actions';
 import VisibilityTypes from '../enum/VisibilityTypes';
+import GroupTypes from '../enum/GroupTypes';
 
 
 
@@ -17,20 +18,29 @@ function createTodo( todo ) {
     detail: ""};
 }
 
-const initState = [
-  createTodo({ text: 'お米買う'}),
-  createTodo({ text: '電気料金払う'}),
-  createTodo({ text: '筋トレ'}),
-  createTodo({ text: '日記書く'}),
+const todoInitState = [
+  createTodo({ text: '新居探す'       , group: {groupId: 1001, groupType: GroupTypes.PROJECT}}),
+  createTodo({ text: '引越し業者選定' , group: {groupId: 1001, groupType: GroupTypes.PROJECT}}),
+  createTodo({ text: 'プレゼント買う' , group: {groupId: 1002, groupType: GroupTypes.PROJECT}}),
+  createTodo({ text: '店予約'         , group: {groupId: 1002, groupType: GroupTypes.PROJECT}}),
+  createTodo({ text: '筋トレ'         , group: {groupId: null, groupType: GroupTypes.INBOX}}),
+  createTodo({ text: '日記書く'       , group: {groupId: null, groupType: GroupTypes.INBOX}}),
 ];
 
+let currentProjectId = 1001;
+
+const projectInitState = [
+  {id: currentProjectId++, name: "引っ越し"     , parent: null, closed: false},
+  {id: currentProjectId++, name: "お誕生日会"   , parent: null, closed: false},
+  {id: currentProjectId++, name: "お花見の準備" , parent: null, closed: false},
+]
 
 const todos = handleActions(
   {
     ADD_TODO: (state, action) => {
       return [
         ...state,
-        createTodo({text: action.payload})
+        createTodo(action.payload)
       ];
     },
     DEL_TODO: (state, action) => {
@@ -43,7 +53,7 @@ const todos = handleActions(
           t.id === action.payload.id ? {...t, ...action.payload} : t
         );
     }
-  }, initState);
+  }, todoInitState);
 
 const visibilityFilter = handleActions({
   SET_VISIBILITY_FILTER: (state, action) => {
@@ -60,19 +70,21 @@ const editing = handleActions({
   }
 }, null);
 
+const group = handleActions({
+  CURRENT_GROUP: (state, action) => {
+    return action.payload;
+  },
+}, {groupId: 1001, groupType: GroupTypes.PROJECT});
 
-let currentProjectId = 0;
 
 const projects = handleActions({
   ADD_PROJECT: (state, action) => [...state, { id: currentProjectId++, name: action.payload}]
-}, [
-  {id: currentProjectId++, name: "引っ越し", parent: null},
-  {id: currentProjectId++, name: "GWの予定", parent: null},
-]);
+}, projectInitState);
 
 export default combineReducers({
   todos,
   visibilityFilter,
   editing,
-  projects
+  projects,
+  group
 });

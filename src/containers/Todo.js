@@ -5,7 +5,7 @@ import {delTodo, editStart, editEnd, changeTodo} from '../actions/index';
 
 function mapStateToProps(state) {
   return {
-    editingId: state.editing
+    editingId: state.editing,
   };
 }
 
