@@ -40,12 +40,12 @@ const Todo = ({ todo, editingId, onDelToDo, onEditStart, onEditEnd, onChangeTodo
       </button>
     </div>
     <div style={{display: editingId !== todo.id ? '' : 'none' }}>
-      <button onClick={() => {
+      <span onClick={() => {
         onEditEnd(todo.id);
         onDelToDo(todo.id);
       }}>
-        削除
-      </button>
+        ◯
+        </span>
 
       <span onClick={() => onEditStart(todo.id)} style={{textDecoration: todo.completed ? 'line-through' : 'none' }}>
         {todo.text}

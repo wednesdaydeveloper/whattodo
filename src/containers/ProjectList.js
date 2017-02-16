@@ -3,11 +3,11 @@ import GroupTypes from '../enum/GroupTypes';
 import { currentGroup } from '../actions/index';
 
 
-const ProjectListComponent = ({projects, currentProjectId, onSelectProject}) => (
+const ProjectListComponent = ({projects, currentGroup, onSelectProject}) => (
   <ul className="nav nav-pills flex-column">
     {projects.map((project) =>
       <li className="nav-item">
-        <a className="nav-link" href="#" onClick={() => {
+        <a className={currentGroup.groupType === GroupTypes.PROJECT && project.id === currentGroup.groupId ? "nav-link active" : "nav-link"} href="#" onClick={() => {
           console.log(project);
           onSelectProject(project.id);}}>{project.name} </a>
       </li>
