@@ -6,7 +6,7 @@ import {addTodo} from '../actions/index';
 function mapStateToProps(state) {
   return { 
     todos: state.todos,
-    group: state.group
+    current: state.current
   };
 }
 function mapDispatchToProps(dispatch) {

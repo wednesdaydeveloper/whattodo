@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TodoAdd = ({ group, onAddToDo }) => {
+const TodoAdd = ({ current, onAddToDo }) => {
 
 	let input;
 
@@ -8,7 +8,7 @@ const TodoAdd = ({ group, onAddToDo }) => {
 		if (ev.keyCode === 13) { // Enter の場合のみ
 			var newTodo = input.value.trim();
 			if (newTodo) {
-				onAddToDo({text: newTodo, group: group});
+				onAddToDo({text: newTodo, projectId: current.id > 1000 ? current.id : null});
 			}
 			input.value="";
 		}

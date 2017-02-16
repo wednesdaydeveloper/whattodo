@@ -9,7 +9,7 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 export const EDIT_START = 'EDIT_START';
 export const EDIT_END = 'EDIT_END';
 export const ADD_PROJECT = 'ADD_PROJECT';
-export const CURRENT_GROUP = 'CURRENT_GROUP';
+export const CURRENT_FILTER = 'CURRENT_FILTER';
 
 export const addTodo            = createAction(ADD_TODO);
 export const delTodo            = createAction(DEL_TODO);
@@ -18,4 +18,4 @@ export const setVisibilityFilter= createAction(SET_VISIBILITY_FILTER);
 export const editStart          = createAction(EDIT_START);
 export const editEnd            = createAction(EDIT_END);
 export const addProject         = createAction(ADD_PROJECT);
-export const currentGroup       = createAction(CURRENT_GROUP);
+export const currentFilter      = createAction(CURRENT_FILTER);

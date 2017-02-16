@@ -1,5 +1,5 @@
 export default {
-  PROJECT   : 'PROJECT',
-  INBOX     : 'INBOX',
-  TODAY     : 'TODAY',
+//   PROJECT   : 'PROJECT',
+//   INBOX     : 'INBOX',
+//   TODAY     : 'TODAY',
 };
