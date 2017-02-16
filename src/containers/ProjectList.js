@@ -8,7 +8,6 @@ const ProjectListComponent = ({projects, currentGroup, onSelectProject}) => (
     {projects.map((project) =>
       <li className="nav-item">
         <a className={currentGroup.groupType === GroupTypes.PROJECT && project.id === currentGroup.groupId ? "nav-link active" : "nav-link"} href="#" onClick={() => {
-          console.log(project);
           onSelectProject(project.id);}}>{project.name} </a>
       </li>
     )}
